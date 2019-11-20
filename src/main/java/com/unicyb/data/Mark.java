@@ -24,7 +24,6 @@ public class Mark {
     @Column(name = "id_user")
     private int idUser;
     private double mark;
-    @Column(name = "is_visit")
     private boolean isVisited;
 
     @Override

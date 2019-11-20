@@ -18,9 +18,14 @@ public class Title {
     private String studio;
     private String author;
     private String genre;
+    private double rating;
+    private String icon;
+    private String year;
+    private String duration;
+    private int episode;
 
     @Override
     public String toString() {
-        return "id - " + id + "; name - " + name + "; studio - " + studio + "; author - " + author + ";genre - " + genre;
+        return "id - " + id + "; name - " + name + "; studio - " + studio + "; author - " + author + "; genre - " + genre + "; rating - " + rating + "; year - " + year + "; duration - " + duration + "; episode - " + episode;
     }
 }

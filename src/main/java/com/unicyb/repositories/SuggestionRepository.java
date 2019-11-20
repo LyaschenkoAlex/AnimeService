@@ -1,10 +1,9 @@
 package com.unicyb.repositories;
 
-import com.unicyb.data.User;
+import com.unicyb.data.Suggestion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
-    User findByName(String username);
+public interface SuggestionRepository extends JpaRepository<Suggestion, Integer> {
 }
