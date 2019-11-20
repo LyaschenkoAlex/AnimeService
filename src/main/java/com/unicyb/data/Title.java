@@ -23,6 +23,7 @@ public class Title {
     private String year;
     private String duration;
     private int episode;
+    private String description;
 
     @Override
     public String toString() {
