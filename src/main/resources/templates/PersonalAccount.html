@@ -15,7 +15,7 @@
     <div class="top">
     
         <div class="backimage"></div><nav class="navbar navbar-expand-lg navbar-light ">
-                <a class="navbar-brand" th:href="@{/show_all_anime}">Anime!</a><!--NAVBAR HEADING WORD-->
+                <a class="navbar-brand" th:href="@{/anime copy}">Anime!</a><!--NAVBAR HEADING WORD-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -23,11 +23,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" th:href="@{/}">Starter page<span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
-<!--                    <li class="nav-item">-->
-<!--                      <a class="nav-link" href="#">Link</a>-->
-<!--                    </li>-->
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
                     <li class="nav-item dropdown">
                      
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -39,10 +39,10 @@
                     </li>
                     
                   </ul>
-<!--                  <form class="form-inline my-2 my-lg-0">-->
-<!--                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-<!--                  </form>-->
+                  <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
                 </div>
               </nav>
     </div>
@@ -51,25 +51,35 @@
                 <div class="column">
                     <div class="jumbotron">
                     </br>
-					<h1>Login</h1>
+					<h1> Personal Account </h1>
+					
+					<p>You can change your information here: <em class = "link2"><a href="make_changes.html"> Change </a></em></p>
+					<form method="POST" th:action="@{/register}" id="registerForm">
+    
+					<label for="name">Name: </label>
+					<div align = "left"><input type="text" name="name" readonly th:value="${user.getName()}"/></div>
+					
+					<br/>
 
-<!--					<p class = "error" th:if="${error}" >-->
-<!--					Unable to login. Check your username and password.-->
-<!--					</p>-->
-    
-					<p>New here? Click to
-					<em class = "link2"><a th:href="@{/register}"> register</a></em>.</p>
-    
-					<!-- tag::thAction[] -->
-					<form method="POST" th:action="@{/login}" id="loginForm">
-					<!-- end::thAction[] -->
-					<label for="username">Username: </label>
-					<input type="text" name="username" id="username" /><br/>
-      
-					<label for="password">Password: </label>
-					<input type="password" name="password" id="password" /><br/>
-      
-					<input type="submit" value="Login"/>
+
+					<label for="birthday">Birthday: </label>
+					<div align = "left"><input type="text" name="birthday" readonly th:value="${user.getBirthday()}"/></div>
+					<br/>
+		
+<!--					<label  for="typeOfPreference">Type of preference: </label>-->
+<!--					<div align = "left"><input  type="text" name="typeOfPreference" readonly value="Type1"/></div>-->
+<!--					<br/>-->
+
+					<label for="registrationDate">Date of registration: </label>
+					<div align = "left"><input type="text" name="registrationDate" readonly th:value="${user.getRegistrationDate()}"/></div>
+          <br/>
+          
+<!--          <label for="lastSeen">Last rated anime: </label>-->
+<!--					<div align = "left"><input type="text" name="lastSeen" readonly value="Name of Anime"/></div>-->
+          <br/>
+          <img th:src="@{images/3.jpg}" style="width:440px;height:220px;"/><!--LAST SEEN ANIME IMAGE-->
+
+					
 					</form>
 					</div>
                            

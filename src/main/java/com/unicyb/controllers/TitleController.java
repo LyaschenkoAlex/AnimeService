@@ -11,17 +11,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("/anime")
 public class TitleController {
 
     @Autowired
     TitleRepository titleRepository;
-    @GetMapping("/{id}")
+    @GetMapping("anime/{id}")
     public String showTitle(Model model, @PathVariable("id") int id) {
         Title title = titleRepository.getOne(id);
         model.addAttribute("title", title);
         return "anime";
+    }
+
+    @GetMapping("show_all_anime")
+    public String showAllAnime(Model model) {
+        List<Title> titles = titleRepository.findAll();
+        model.addAttribute("allAnime", titleRepository.findAll());
+        return "anime copy";
     }
 
     public void createTitle(Title title) {
