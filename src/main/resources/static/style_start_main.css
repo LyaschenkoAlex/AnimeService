@@ -1,0 +1,123 @@
+.top{
+    width: 100%;
+    height: 200px;
+}
+.backimage{
+    width:100%;
+    height:100%;
+    background-image:url("http://localhost:8080/images/1.jpg");
+    background-size:100%;
+    background-position:0% 5%;
+}
+.jumbotron{
+    width:100%;
+    height:100%;
+}
+.adv{
+    width:20%;
+    height:90%;
+    background:gray;
+    margin-left:70%;
+}
+.column{
+    float:left;
+    width:85%;
+    padding: 0 10px;
+}
+.column-2{
+    float:left;
+    width:30%;
+    padding: 0 30px;
+}
+.column-3{
+	float: left;
+	margin-left: 0%;
+	width: 100%;
+}
+
+.heading-image{
+    
+  max-width: 100%;
+  
+  max-height: 50%;
+}
+.row{
+    margin-left:10%;
+}
+.row-2{
+    margin-left:0;
+}
+.navbar{
+    background:rgb(179, 255, 242);
+}
+.dev{
+    background-color:  rgb(255, 245, 235)
+}
+h1{
+	text-transform: upper-latin;
+	padding-bottom: 5px;
+}
+.error{
+	text-align: center-left;
+	color: red;
+}
+label{
+	padding-right: 15px;
+	padding-left: 10px;
+	color: #5200a5;
+}
+.link2{
+	text-decoration: underline;
+	font-weight: bold;
+}
+.heads{
+	padding-left: 10%;
+	text-align: center-right;
+}
+.image{
+    
+  max-width: 100%;
+  
+  max-height: 50%;
+  
+  margin-bottom: 10px;
+  
+  float: left;
+}  
+.hi{
+	width:100%;
+    height:100%;
+    background-image:url("http://localhost:8080/images/2.jpg");
+    background-size:100%;
+    background-position:0% 5%;
+	min-height: 400px;
+	vertical-align: top;
+}
+.great{
+	font-size: 44px;
+	text-align: right;
+	color: white;
+}
+.sgreat{
+	font-size: 24px;
+	text-align: right;
+	color: white;
+}
+.gbutton{
+	color: white;
+	background-color: DimGrey;
+	height:50px;
+	width: 85%;
+	border-radius: 20px/20px;
+	border: none;
+	font-size:22px;
+}
+.bbutton{
+	color: white;
+	background-color: DimGrey;
+	height:50px;
+	width: 85%;
+	border-radius: 20px/20px;
+	border: none;
+	font-size:20px;
+}

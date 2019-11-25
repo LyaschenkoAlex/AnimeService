@@ -5,6 +5,7 @@ import com.unicyb.data.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.vote.RoleVoter;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -26,61 +27,55 @@ import org.springframework.security.crypto.password.StandardPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-  
+
 //end::securityConfigOuterClass[]
 
-//tag::customUserDetailsService[]
-  @Autowired
-  private UserDetailsService userDetailsService;
-  
-//end::customUserDetailsService[]
+    //tag::customUserDetailsService[]
+    @Autowired
+    private UserDetailsService userDetailsService;
 
-  //tag::configureHttpSecurity[]
-  //tag::authorizeRequests[]
-  //tag::customLoginPage[]
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http
-      .authorizeRequests()
-            .antMatchers("/hello_friend", "/hello_friend/**", "/marks", "/marks/**").hasRole("USER")
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/design", "/orders","/hello_world")
+                .access("hasRole('ROLE_USER')")
+                .antMatchers("/", "/**").access("permitAll")
+                //end::authorizeRequests[]
 
-            //end::authorizeRequests[]
-        
-      .and()
-        .formLogin()
-          .loginPage("/login")
-        //end::customLoginPage[]
-          
-      // tag::enableLogout[]
-      .and()
-        .logout()
-          .logoutSuccessUrl("/")
-      // end::enableLogout[
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                //end::customLoginPage[]
 
-      .and()  
-        .headers()
-          .frameOptions()
-            .sameOrigin()
+                // tag::enableLogout[]
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
+                // end::enableLogout[]
 
-      ;
-  }
+                .and()
+                .headers()
+                .frameOptions()
+                .sameOrigin()
 
-  @Bean
-  public PasswordEncoder encoder() {
-    return new StandardPasswordEncoder("53cr3t");
-  }
-  
-  
-  @Override
-  protected void configure(AuthenticationManagerBuilder auth)
-      throws Exception {
+        ;
+    }
 
-    auth
-      .userDetailsService(userDetailsService)
-      .passwordEncoder(encoder());
-    
-  }
+    @Bean
+    public PasswordEncoder encoder() {
+        return new StandardPasswordEncoder("53cr3t");
+    }
+
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth)
+            throws Exception {
+
+        auth
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(encoder());
+
+    }
 
 }
-
-

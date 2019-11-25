@@ -1,124 +1,139 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/styles.css}">
     <title>Anime</title>
-  </head>
-  <body class="dev">
-    <div class="top">
-    
-        <div class="backimage"></div><nav class="navbar navbar-expand-lg navbar-light ">
-                <a class="navbar-brand" href="#">Anime!</a><!--NAVBAR HEADING WORD-->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-              
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                     
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+</head>
+<body class="dev">
+<div class="top">
+
+    <div class="backimage"></div>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <a class="navbar-brand" href="#">Anime!</a><!--NAVBAR HEADING WORD-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                    </li>
-                    
-                  </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                  </form>
+                    </div>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</div>
+
+<div class="row">
+    <div class="column">
+        <div class="jumbotron">
+            </br>
+            <div class="row-2">
+                <div class="column-3">
+                    <h2 th:text="${title.getName()}"></h2>
+<!--                    <h2>Невероятные приключения ДжоДжо</h2> &lt;!&ndash;ANIME NAME GOES HERE&ndash;&gt;-->
+<!--                    <h3>JoJo Bizarre Adventure</h3>&lt;!&ndash;ORIGINAL NAMES GO HERE&ndash;&gt;-->
+                    <h4><span class="badge badge-secondary badge-red">New</span></h4>
+                    <!--STATUS BADGE(styles: badge-red, badge-green, badge-violet)-->
+                    <hr class="my-4">
+<!--                    <p><span class="span-strong">Просмотров</span></p>-->
+                    <p><span class="span-strong">Год: <span th:text="${title.getYear()}"></span></span></p>
+                    <p><span class="span-strong">Возрастной рейтинг: 16+</span></p>
+                    <p><span class="span-strong">Жанр: <span th:text="${title.getGenre()}"></span></span></p>
+                    <p><span class="span-strong">Студия: <span th:text="${title.getStudio()}"></span></span></p>
+                    <p><span class="span-strong">Режиссёр: <span th:text="${title.getAuthor()}"></span></span></p>
+                    <p><span class="span-strong">Количество серий: <span th:text="${title.getEpisode()}"></span></span></p>
+                    <p><span class="span-strong">Длительность: <span th:text="${title.getDuration()}"></span></span></p>
+                    <p><span class="span-strong">Рейтинг: <span th:text="${title.getRating()}"></span></span></p>
+                    <hr class="my-4">
+
+
                 </div>
-              </nav>
-    </div>
-   
-            <div class="row">
-              <div class="column">
-                    <div class="jumbotron">
+                <div class="column-4">
+                    <img th:src="${title.getIcon()}" class="heading-image"/><!--ANIME IMAGE GOES HERE. CARE FOR SIZES!-->
+                </div>
+                <div class="column-5">
+                    <!--Decsription-->
+                    <p th:text="${title.getDescription()}">Will be soon</p>
                     </br>
-                    <div class="row-2">
-                            <div class="column-3">
-                                    <h2 >Невероятные приключения ДжоДжо</h2> <!--ANIME NAME GOES HERE-->
-                                    <h3>JoJo Bizarre Adventure</h3><!--ORIGINAL NAMES GO HERE-->
-                                    <h4><span class="badge badge-secondary badge-red">New</span></h4><!--STATUS BADGE(styles: badge-red, badge-green, badge-violet)-->
-                                    <hr class="my-4">
-                                    <p><span class="span-strong">Просмотров</span> </p>
-                                    <p><span class="span-strong">Год</span></p>
-                                    <p><span class="span-strong">Возрастной рейтинг</span></p>
-                                    <p><span class="span-strong">Жанр</span></p>
-                                    <p><span class="span-strong">Студия</span></p>
-                                    <p><span class="span-strong">Режиссёр</span></p>
-                                    <p><span class="span-strong">Тип</span></p>
-                                    <p><span class="span-strong">Серии</span></p>
-                                    <p><span class="span-strong">Перевод</span></p>
-                                    <p><span class="span-strong">Озвучка</span></p>
-                                    <hr class="my-4">
-                                   
-                                   
-                                  </div>
-                                  <div class="column-4">
-                                    <img src="jojo.png" class="heading-image"/><!--ANIME IMAGE GOES HERE. CARE FOR SIZES!-->
-                                </div>
-                              <div class="column-5">
-                                <!--Decsription-->
-                                <p>Каждое поколение семьи Джостаров может похвастаться своим ДжоДжо, так как по старой традиции одного из членов семьи всегда называют именем, начинающимся именно с этого слога. Но это не просто прихоть известного семейства. Такое прозвище – своего рода знак героя-борца с оборотнями, нежитью и другой нечистью. Начало этой старой доброй традиции было положено Джорджем Джостаром еще во времена королевы Виктории. Именно тогда он и допустил досадную ошибку приняв в свою семью не того человека. С тех пор его потомкам скучать не приходилось.
-        
-                                  Джонатан Джостер случайно узнает секрет своего приемного брата. Он непременно хочет остановить его злодеяния, восстановить репутацию своего рода и вернуть утраченную сердечную привязанность. В ход пошло все: от искусных боевых приемов до волшебных военных заклинаний, а иногда и просто бандитских разборок на западный манер. Но маски Южной Америки, конечно же, доставили больше всего хлопот!</p>
-                          </br>
-                              </div>
-                              <div class="column-5">
-                              <hr class="my-4">
-                              <iframe class="videoframe" src="https://www.youtube.com/embed/gH_i1mqgEDU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div>
-                            </div>
-                           
-                        </div>
-                           
-              </div>
-              <div class="column-2"><div class="jumbotron">
-              </br>
-                    <h4>Рекомендованое</h4><!--Sidebar caption-->
-                 <hr class="my-4">
-                 <div class="card" style="width: 21rem;"><!--Card 1-->
-                  <img src="boruto.png" class="card-img-top" alt="..."><!--Card image-->
-                  <div class="card-body">
-                    <h5 class="card-title">Боруто: Новое Поколение</h5><!--Card big text-->
-                    <p class="card-text">Рекомендовано на основе <span>ваших подписок</span></p><!--Card subtext(use span for visual styling)-->
-                    <a href="#" class="btn btn-primary">Смотреть!</a><!--Watch button(change href attribute to corresponding page)-->
-                  </div>
                 </div>
-                <div class="card" style="width: 21rem;">
-                  <img src="cat.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
+                <div class="column-5">
+                    <hr class="my-4">
+                    <iframe class="videoframe" src="https://www.youtube.com/embed/gH_i1mqgEDU" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="column-2">
+        <div class="jumbotron">
+            </br>
+            <h4>Рекомендованое</h4><!--Sidebar caption-->
+            <hr class="my-4">
+            <div class="card" style="width: 21rem;"><!--Card 1-->
+                <img th:src="${title.getIcon()}" class="card-img-top" alt="..."><!--Card image-->
+                <div class="card-body">
+                    <h5 class="card-title">Боруто: Новое Поколение</h5><!--Card big text-->
+                    <p class="card-text">Рекомендовано на основе <span>ваших подписок</span></p>
+                    <!--Card subtext(use span for visual styling)-->
+                    <a href="#" class="btn btn-primary">Смотреть!</a>
+                    <!--Watch button(change href attribute to corresponding page)-->
+                </div>
+            </div>
+            <div class="card" style="width: 21rem;">
+                <img th:src="${title.getIcon()}" class="card-img-top" alt="...">
+                <div class="card-body">
                     <h5 class="card-title">Кошечка из Сакурасо</h5>
                     <p class="card-text">Рекомендовано на основе <span>высокого рейтинга</span></p>
                     <a href="#" class="btn btn-primary">Смотреть!</a>
-                  </div>
                 </div>
-                  </div></div>
-              
             </div>
-          
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- Do not touch or everything stops working-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
+        </div>
+    </div>
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- Do not touch or everything stops working-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 
 </body>

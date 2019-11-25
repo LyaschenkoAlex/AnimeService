@@ -1,0 +1,81 @@
+.top{
+    width: 100%;
+    height: 200px;
+}
+.backimage{
+    width:100%;
+    height:100%;
+    background-image:url("http://localhost:8080/images/1.jpg");
+    background-size:100%;
+    background-position:0% 5%;
+}
+.jumbotron{
+    width:100%;
+    height:100%;
+}
+.adv{
+    width:20%;
+    height:90%;
+    background:gray;
+    margin-left:70%;
+}
+.column{
+    float:left;
+    width:85%;
+    padding: 0 10px;
+	
+}
+.column-2{
+    float:left;
+    width:30%;
+    padding: 0 30px;
+}
+
+.heading-image{
+    
+  max-width: 100%;
+  
+  max-height: 50%;
+}
+.row{
+    margin-left:10%;
+}
+.row-2{
+    margin-left:0;
+}
+.navbar{
+    background:rgb(179, 255, 242);
+}
+.dev{
+    background-color:  rgb(255, 245, 235)
+}
+h1{
+	text-transform: upper-latin;
+	padding-bottom: 5px;
+	border-bottom: 3px solid #5200a5;
+}
+.error{
+	text-align: center-left;
+	color: red;
+}
+label{
+	padding-right: 15px;
+	padding-left: 10px;
+	color: #5200a5;
+}
+.column input{
+	margin-top: 10px;
+	height: 40 px;
+	width: 600 px;
+	border-radius: 20px/20px;
+	border: none;
+	padding-left: 10px;
+	padding-right: 10px;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.82);
+	font-size: 18px;
+}
+.link2{
+	text-decoration: underline;
+	color:blue;
+	
+}

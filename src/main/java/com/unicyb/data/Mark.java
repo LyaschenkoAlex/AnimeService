@@ -23,11 +23,26 @@ public class Mark {
     private int idTitle;
     @Column(name = "id_user")
     private int idUser;
-    private double mark;
+    @Column(name = "mark_first")
+    private double markFirst;
+    @Column(name = "mark_second")
+    private double markSecond;
+    @Column(name = "mark_third")
+    private double markThird;
     private boolean isVisited;
+
+    public Mark(int idTitle, int idUser, double markFirst, double markSecond, double markThird) {
+        this.idTitle = idTitle;
+        this.idUser = idUser;
+        this.markFirst = markFirst;
+        this.markSecond = markSecond;
+        this.markThird = markThird;
+    }
 
     @Override
     public String toString() {
-        return "idTitle - " + idTitle + "; idUser - " + idUser + ";mark - " + mark + "isVisited";
+        return idUser + " " + idTitle + " " + markFirst + " " + markSecond + " " + markThird + "\n";
     }
+
+
 }

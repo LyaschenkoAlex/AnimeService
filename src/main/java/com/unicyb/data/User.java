@@ -6,9 +6,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 
 @Entity
 @Table(name = "user")
@@ -42,9 +44,18 @@ public class User implements UserDetails {
         this.registrationDate = registrationDate;
         this.password = password;
     }
+
+    public User(String name, String birthday, String password) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        this.name = name;
+        this.birthday = birthday;
+        this.password = password;
+        this.registrationDate = formatter.format(date);
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("USER"));
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override
