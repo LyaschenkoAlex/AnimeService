@@ -17,7 +17,7 @@
 
     <div class="backimage"></div>
     <nav class="navbar navbar-expand-lg navbar-light ">
-        <a class="navbar-brand" href="#">Anime!</a><!--NAVBAR HEADING WORD-->
+        <a class="navbar-brand" th:href="@{/../show_all_anime}">Anime!</a><!--NAVBAR HEADING WORD-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,11 +26,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Link</a>-->
+<!--                </li>-->
                 <li class="nav-item dropdown">
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -99,22 +99,14 @@
             </br>
             <h4>Рекомендованое</h4><!--Sidebar caption-->
             <hr class="my-4">
-            <div class="card" style="width: 21rem;"><!--Card 1-->
-                <img th:src="${title.getIcon()}" class="card-img-top" alt="..."><!--Card image-->
+            <div class="card" style="width: 21rem;" th:each="anime : ${titles}"><!--Card 1-->
+                <img th:src="${anime.getIcon()}" class="card-img-top" alt="..."><!--Card image-->
                 <div class="card-body">
-                    <h5 class="card-title">Боруто: Новое Поколение</h5><!--Card big text-->
+                    <h3 class="card-title" th:text="${anime.getName()}"></h3><!--Card big text-->
                     <p class="card-text">Рекомендовано на основе <span>ваших подписок</span></p>
                     <!--Card subtext(use span for visual styling)-->
-                    <a href="#" class="btn btn-primary">Смотреть!</a>
+                    <a th:href="${anime.getId()}" class="btn btn-primary">Смотреть!</a>
                     <!--Watch button(change href attribute to corresponding page)-->
-                </div>
-            </div>
-            <div class="card" style="width: 21rem;">
-                <img th:src="${title.getIcon()}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Кошечка из Сакурасо</h5>
-                    <p class="card-text">Рекомендовано на основе <span>высокого рейтинга</span></p>
-                    <a href="#" class="btn btn-primary">Смотреть!</a>
                 </div>
             </div>
         </div>

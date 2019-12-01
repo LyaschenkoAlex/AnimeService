@@ -15,7 +15,7 @@
     <div class="top">
     
         <div class="backimage"></div><nav class="navbar navbar-expand-lg navbar-light ">
-                <a class="navbar-brand" th:href="@{/anime copy}">Anime!</a><!--NAVBAR HEADING WORD-->
+                <a class="navbar-brand" th:href="@{/show_all_anime}">Anime!</a><!--NAVBAR HEADING WORD-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -23,10 +23,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
+                      <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                      
@@ -56,22 +53,28 @@
 					<p>You can change your information here: <em class = "link2"><a href="make_changes.html"> Change </a></em></p>
 					<form method="POST" th:action="@{/register}" id="registerForm">
     
-					<label for="name">Name: </label>
-					<div align = "left"><input type="text" name="name" readonly th:value="${user.getName()}"/></div>
+					<div align = "left"><label>
+                        Your name:
+                        <input type="text" name="name" readonly th:value="${user.getName()}"/>
+                    </label></div>
 					
 					<br/>
 
 
-					<label for="birthday">Birthday: </label>
-					<div align = "left"><input type="text" name="birthday" readonly th:value="${user.getBirthday()}"/></div>
+					<div align = "left"><label>
+                        Birthday:
+                        <input type="text" name="birthday" readonly th:value="${user.getBirthday()}"/>
+                    </label></div>
 					<br/>
 		
 <!--					<label  for="typeOfPreference">Type of preference: </label>-->
 <!--					<div align = "left"><input  type="text" name="typeOfPreference" readonly value="Type1"/></div>-->
 <!--					<br/>-->
 
-					<label for="registrationDate">Date of registration: </label>
-					<div align = "left"><input type="text" name="registrationDate" readonly th:value="${user.getRegistrationDate()}"/></div>
+					<div align = "left"><label>
+                        Registration date
+                        <input type="text" name="registrationDate" readonly th:value="${user.getRegistrationDate()}"/>
+                    </label></div>
           <br/>
           
 <!--          <label for="lastSeen">Last rated anime: </label>-->

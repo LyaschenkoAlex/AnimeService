@@ -18,7 +18,7 @@
 
     <div class="backimage"></div>
     <nav class="navbar navbar-expand-lg navbar-light ">
-        <a class="navbar-brand" href="#">Anime!</a><!--NAVBAR HEADING WORD-->
+        <a class="navbar-brand" th:href="show_all_anime">Anime!</a><!--NAVBAR HEADING WORD-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/login}">Login <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" th:href="@{/user}">Account <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/}">Starter page</a>
@@ -59,7 +59,13 @@
                 <h4 class="card-title"><span th:text="${anime.getName()}"></span></h4>
 <!--                <p class="card-text"><small class="text-muted"><span th:text="${anime.getRating()}"></span></small></p>-->
                 <span class="fa fa-star" style="color:orange;">&nbsp<span th:text="${anime.getRating()}"></span>&nbsp</span>
-                <button type="button" class="btn btn-primary">Смотреть</button>
+<!--                <button type="button" class="btn btn-primary">Смотреть</button>-->
+<!--                <a th:href="anime/${anime.getId()}">watch</a>-->
+<!--                <p th:text="${anime.getId()}"></p>-->
+                <a th:href="anime+'/'+${anime.getId()}">Show anime</a>
+<!--                <form method="GET" th:action="/anime/${anime.getId()}" id="loginForm">-->
+<!--                    <button type="submit" class="bbutton">Login</button>-->
+<!--                </form>-->
 
             </div>
         </div>
