@@ -5,6 +5,7 @@ import com.unicyb.data.User;
 import com.unicyb.repositories.TitleRepository;
 import com.unicyb.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,6 +45,7 @@ public class TitleController {
 
     @GetMapping("show_all_anime")
     public String showAllAnime(Model model) {
+        model.addAttribute("role", SecurityContextHolder.getContext().getAuthentication().getName());
         List<Title> titles = titleRepository.findAll();
         model.addAttribute("allAnime", titleRepository.findAll());
         return "anime copy";

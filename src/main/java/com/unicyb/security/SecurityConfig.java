@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 //end::securityConfigOuterClass[]
 //tag::baseBonesImports[]
@@ -40,18 +41,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/design", "/orders","/user", "/anime/**")
                 .access("hasRole('ROLE_USER')")
-                .antMatchers("/", "/**").access("permitAll")
+//                .antMatchers("/", "/**").access("permitAll")
+                .antMatchers("/login/**", "/register/**", "/starter").access("anonymous")
                 //end::authorizeRequests[]
-
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/show_all_anime")
                 //end::customLoginPage[]
 
                 // tag::enableLogout[]
-                .and()
-                .logout()
-                .logoutSuccessUrl("/")
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/starter")
+
                 // end::enableLogout[]
 
                 .and()

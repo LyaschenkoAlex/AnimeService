@@ -26,12 +26,40 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/user}">Account <span class="sr-only">(current)</span></a>
-                </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}">Starter page</a>
+                <li class="nav-item active">
+
+
+                    <th:block th:switch="${role}">
+                        <th:block th:case="'anonymousUser'">
+                            <a class="nav-link" th:href="@{/login}">Login</a>
+
+                        </th:block>
+                        <th:block th:case="*">
+                            <a class="nav-link" th:href="@{/user}">Account <span class="sr-only">(current)</span></a>
+
+
+                        </th:block>
+                    </th:block>
                 </li>
+                <li class="nav-item active">
+
+
+                    <th:block th:switch="${role}">
+                        <th:block th:case="'anonymousUser'">
+                            <a class="nav-link" th:href="@{/starter}">Starter page</a>
+
+                        </th:block>
+                        <th:block th:case="*">
+                            <a class="nav-link" th:href="@{logout}">Logout</a>
+
+
+                        </th:block>
+                    </th:block>
+                </li>
+
+                <!--                    <a class="nav-link" th:href="@{/starter}">Starter page</a>-->
                 <li class="nav-item dropdown">
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -54,18 +82,20 @@
 <div>
     <div class="card-deck" style="width:80%; margin-left:10%" th:each="anime : ${allAnime}">
         <div class="card mb-4">
-            <img class="card-img-top img-fluid" style="width:100px;height:120px;" th:src="${anime.getIcon()}" alt="Card image cap">
+            <img class="card-img-top img-fluid" style="width:100px;height:120px;" th:src="${anime.getIcon()}"
+                 alt="Card image cap">
             <div class="card-body">
                 <h4 class="card-title"><span th:text="${anime.getName()}"></span></h4>
-<!--                <p class="card-text"><small class="text-muted"><span th:text="${anime.getRating()}"></span></small></p>-->
-                <span class="fa fa-star" style="color:orange;">&nbsp<span th:text="${anime.getRating()}"></span>&nbsp</span>
-<!--                <button type="button" class="btn btn-primary">Смотреть</button>-->
-<!--                <a th:href="anime/${anime.getId()}">watch</a>-->
-<!--                <p th:text="${anime.getId()}"></p>-->
+                <!--                <p class="card-text"><small class="text-muted"><span th:text="${anime.getRating()}"></span></small></p>-->
+                <span class="fa fa-star" style="color:orange;">&nbsp<span
+                        th:text="${anime.getRating()}"></span>&nbsp</span>
+                <!--                <button type="button" class="btn btn-primary">Смотреть</button>-->
+                <!--                <a th:href="anime/${anime.getId()}">watch</a>-->
+                <!--                <p th:text="${anime.getId()}"></p>-->
                 <a th:href="anime+'/'+${anime.getId()}">Show anime</a>
-<!--                <form method="GET" th:action="/anime/${anime.getId()}" id="loginForm">-->
-<!--                    <button type="submit" class="bbutton">Login</button>-->
-<!--                </form>-->
+                <!--                <form method="GET" th:action="/anime/${anime.getId()}" id="loginForm">-->
+                <!--                    <button type="submit" class="bbutton">Login</button>-->
+                <!--                </form>-->
 
             </div>
         </div>
